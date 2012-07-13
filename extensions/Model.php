@@ -27,7 +27,8 @@ class Model extends \lithium\data\Model {
 	public static function __callStatic($method, $params) {
 		$class = get_called_class();
 		if (!static::_isBase($class) && $behaviors = static::_object()->_actsAs) {
-			if(!Behaviors::call($class, $behaviors, $method, $params)) parent::__callStatic($method, $params);
+			if(!Behaviors::call($class, $behaviors, $method, $params)) 
+				return parent::__callStatic($method, $params);
 		}
 	}
 }
